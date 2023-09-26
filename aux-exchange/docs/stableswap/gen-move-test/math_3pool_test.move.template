@@ -1,0 +1,27 @@
+#[test_only]
+module aux::math_3pool_test {
+    use aux::math_3pool::{calculate_d, calculate_x};
+
+{{range .Tests}}    #[test]
+    fun test_calculate_d_{{.Id}}() {
+        // test
+        let x0: u128 = {{.X0}};
+        let x1: u128 = {{.X1}};
+        let x2: u128 = {{.X2}};
+        let expected_d: u128 = {{.D}};
+        let d = calculate_d(x0, x1, x2, 15);
+        assert!(d == expected_d, 1);
+    }
+{{end}}
+{{range .Tests}}    #[test]
+    fun test_calculate_x_0_{{.Id}}() {
+        // test
+        let x0: u128 = {{.X0}};
+        let x1: u128 = {{.X1}};
+        let x2: u128 = {{.X2}};
+        let d: u128 = {{.D}};
+        let expected_x2: u128 = {{.ExpectedX2}};
+        let x2 = calculate_x(x0, x1, x2, 2, 15, d);
+        assert!(x2 == expected_x2, 1);
+    }
+{{end}}}
