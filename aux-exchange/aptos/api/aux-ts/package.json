@@ -1,0 +1,93 @@
+{
+  "name": "@aux/aux-ts",
+  "version": "0.1.0",
+  "author": "East Rock Labs",
+  "files": [
+    "build"
+  ],
+  "main": "build/index.js",
+  "types": "build",
+  "scripts": {
+    "test": "mocha --allow-uncaught --use-strict",
+    "build": "tsc",
+    "sim:live": "ts-node scripts/sim/live.ts",
+    "sim:replay": "ts-node scripts/sim/replay.ts",
+    "metadata": "ts-node scripts/metadata.ts",
+    "benchmark:gas": "ts-node test/benchmark.ts",
+    "seed": "ts-node scripts/seed.ts",
+    "start:localnet-amm-trader": "APTOS_NETWORK=localnet ts-node examples/localnet-amm-trader.ts",
+    "start:localnet-clob-trader": "APTOS_NETWORK=localnet ts-node examples/localnet-clob-trader.ts",
+    "start:localnet-stake-example": "APTOS_NETWORK=local ts-node examples/localnet-stake-allocator.ts",
+    "start:devnet-clob-trader": "APTOS_NETWORK=devnet ts-node examples/devnet-clob-trader.ts",
+    "start:devnet-clob-orders": "APTOS_NETWORK=devnet ts-node examples/devnet-clob-orders.ts",
+    "start:graphql": "ts-node src/graphql/index.ts",
+    "restart:graphql": "nodemon src/graphql/index.ts",
+    "pm2:graphql": "pm2 start src/graphql/index.ts",
+    "codegen:graphql": "graphql-codegen --config codegen.ts",
+    "start:indexer": "ts-node src/indexer/index.ts",
+    "restart:indexer": "nodemon src/indexer/index.ts",
+    "pm2:indexer": "pm2 start src/indexer/index.ts",
+    "start:heartbeat": "ts-node scripts/sentry.ts"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.7.0",
+    "@graphql-tools/load-files": "^6.6.1",
+    "@graphql-tools/schema": "^9.0.4",
+    "@pythnetwork/client": "^2.8.0",
+    "@solana/web3.js": "^1.66.1",
+    "apollo-server-core": "^3.10.2",
+    "apollo-server-express": "^3.10.2",
+    "aptos": "1.3.16",
+    "axios": "^1.1.3",
+    "axios-cache-interceptor": "^1.0.1",
+    "bn.js": "^5.2.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "graphql": "^16.6.0",
+    "graphql-scalars": "^1.19.0",
+    "graphql-subscriptions": "^2.0.0",
+    "graphql-ws": "^5.11.0",
+    "js-sha3": "^0.8.0",
+    "lodash": "^4.17.21",
+    "reflect-metadata": "^0.1.13",
+    "tslog": "^3.3.4",
+    "ws": "^8.9.0",
+    "yaml": "^2.1.1"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^2.13.7",
+    "@graphql-codegen/introspection": "2.2.1",
+    "@graphql-codegen/typescript": "2.7.4",
+    "@graphql-codegen/typescript-resolvers": "2.7.4",
+    "@tsconfig/node18-strictest": "^1.0.0",
+    "@types/bn.js": "^5.1.1",
+    "@types/express": "^4.17.14",
+    "@types/lodash": "^4.14.186",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^18.7.16",
+    "@types/ws": "^8.5.3",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
+    "eslint": "^8.23.0",
+    "mocha": "^10.0.0",
+    "nodemon": "^2.0.20",
+    "organize-imports-cli": "^0.10.0",
+    "prettier": "2.7.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.3"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "mocha": {
+    "require": "ts-node/register",
+    "extensions": [
+      "ts"
+    ],
+    "spec": [
+      "test/**/*.spec.ts"
+    ]
+  },
+  "packageManager": "yarn@3.2.4"
+}
